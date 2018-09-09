@@ -61,12 +61,23 @@ export function getPost(req, res) {
   });
 }
 
+
+export function editPost(req, res) {
+  Post.update({ cuid: req.params.cuid }, req.body.post).exec((err, post) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+    res.json({ post });
+  });
+}
+
 /**
  * Delete a post
  * @param req
  * @param res
  * @returns void
  */
+
 export function deletePost(req, res) {
   Post.findOne({ cuid: req.params.cuid }).exec((err, post) => {
     if (err) {
@@ -77,4 +88,23 @@ export function deletePost(req, res) {
       res.status(200).end();
     });
   });
+}
+
+export function thumbUp(req, res) {
+    console.log(req.params.cuid)
+  Post.findOneAndUpdate({ cuid: req.params.cuid }, { $inc: { voteCount: 1 } }, err => {
+      if (err) {
+      res.status(500).send(err);
+    }
+      res.status(200).end();
+  })
+}
+
+export function thumbDown(req, res) {
+  Post.findOneAndUpdate({ cuid: req.params.cuid }, { $inc: { voteCount: -1 } }, err => {
+      if (err) {
+      res.status(500).send(err);
+    }
+      res.status(200).end();
+  })
 }

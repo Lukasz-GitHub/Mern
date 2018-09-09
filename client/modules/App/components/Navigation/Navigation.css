@@ -1,0 +1,22 @@
+.navigation {
+    text-align: center;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    background-color: #0379b0;
+}
+
+.navigation a {
+    color: #FFF;
+    text-decoration: none;
+}
+
+.navigation li {
+    width: 150px;
+    display: inline-block;
+    padding: 10px 40px;
+    border-left: 1px dashed #000;
+}
+
+.navigation li:last-child {
+    border-right: 1px dashed #000;
+}

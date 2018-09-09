@@ -1,1 +1,12 @@
-/* About styles */
+.about {
+    text-align: center;
+    margin: 20px;
+}
+
+.about h2 {
+    text-decoration: underline;
+}
+
+.about p {
+    padding: 15px 0;
+}
